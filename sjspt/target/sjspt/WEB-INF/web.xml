@@ -1,0 +1,97 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+	<display-name>Archetype Created Web Application</display-name>
+
+	<context-param>
+		<param-name>adminEmail</param-name>
+		<param-value>admin@admin.asd</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>DomainServlet</servlet-name>
+		<servlet-class>com.epam.jjp.sjspt.DomainServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>FirstServlet</servlet-name>
+		<servlet-class>com.epam.jjp.sjspt.FirstServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>pdf</servlet-name>
+		<servlet-class>com.epam.jjp.sjspt.FirstServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>SecondServlet</servlet-name>
+		<servlet-class>com.epam.jjp.sjspt.SecondServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>BattleServlet</servlet-name>
+		<servlet-class>com.epam.jjp.sjspt.BattleServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>indexJSP</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+		<init-param>
+			<param-name>JSP-init-param</param-name>
+			<param-value>JSP init value</param-value>
+		</init-param>
+		<init-param>
+			<param-name>NAME</param-name>
+			<param-value>VALUE</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>loggerServlet</servlet-name>
+		<servlet-class>com.epam.jjp.sjspt.LoggerServlet</servlet-class>
+	</servlet>
+	
+
+	<servlet-mapping>
+		<servlet-name>indexJSP</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>FirstServlet</servlet-name>
+		<url-pattern>/FirstServletCall</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SecondServlet</servlet-name>
+		<url-pattern>/SecondServletCall</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>pdf</servlet-name>
+		<url-pattern>/pdf</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>DomainServlet</servlet-name>
+		<url-pattern>/DomainServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>BattleServlet</servlet-name>
+		<url-pattern>/Battle</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>loggerServlet</servlet-name>
+		<url-pattern>/logger</url-pattern>
+	</servlet-mapping>
+	
+	<taglib>
+	  <taglib-uri>/costumForeach</taglib-uri>
+	  <taglib-location>/WEB-INF/tags/foreach.tld</taglib-location>
+	</taglib>
+</web-app>
+

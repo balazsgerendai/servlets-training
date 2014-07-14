@@ -1,0 +1,13 @@
+body{
+	background-image:url('../media/bg.png');
+	background-repeat: repeat;
+}
+#logo{
+	height: 100px;	
+}
+.empireWinnerAnnouncerDiv{
+	color: red;
+}
+.republicWinnerAnnouncerDiv{
+	color: blue;
+}

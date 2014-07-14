@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Star Wars</title>
+<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+	<div class="page-header" align="center">
+		<img src="resources/media/logo.png" id="logo" />
+
+	</div>
+	<div align="center"> 
+		<form action="logger" method="POST">
+			<button id="startBattle" type="submit" class="btn btn-default btn-lg">
+			  <span class="glyphicon glyphicon-star"></span>START BATTLE!
+			</button>
+		</form>
+		<br/>
+	</div>
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="row">
+					<div class="col-sm-50 col-md-50">
+						<div class="panel panel-danger">
+							<div class="panel-heading">Battle report: Endor</div>
+							<div class="panel-body">
+								<div align="center" class="republicWinnerAnnouncerDiv">
+									<h1>Republic wins</h1>
+									<img src="resources/media/republic.png" height="200px;"
+										width="200px" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-50 col-md-50">
+						<div class="panel panel-danger">
+							<div class="panel-heading">Battle report: Endor</div>
+							<div class="panel-body">
+								<div align="center" class="empireWinnerAnnouncerDiv">
+									<h1>Empire wins</h1>
+									<img src="resources/media/empire.png" height="200px;"
+										width="200px" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">

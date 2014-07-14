@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:c="http://www.springframework.org/schema/c"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	                       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename">
+			<value>locale\\messages</value>
+		</property>
+	</bean>
+	
+	<bean id="propertyEditorConfigure" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	    <property name="propertyEditorRegistrars">
+	        <list>
+	            <bean class="com.epam.jjp.sjspt.propertyeditors.MessageEditorRegistrar">
+	                <property name="messageSource" ref="messageSource" />
+	            </bean>
+	        </list>
+	    </property>
+	</bean>
+
+	
+ 	<bean id="battlefield" class="com.epam.jjp.sjspt.domain.Battlefield" scope="prototype" lazy-init="true">
+	 	<constructor-arg index="0" value="i18n:battle.name" />
+		<constructor-arg index="1" ref="armies" />
+	</bean>
+	
+
+	<bean id="battlefieldFactory" class="com.epam.jjp.sjspt.factory.BattlefieldFactory" scope="prototype">
+		<lookup-method name="createBattlefield" bean="battlefield"/>
+	</bean>
+	
+	<util:list id="armies">
+		<ref bean="sithArmy"/>
+		<ref bean="jediArmy"/>
+	</util:list>
+	
+	<bean id="jediArmy" class="com.epam.jjp.sjspt.domain.Army" scope="prototype">
+		<constructor-arg index="0" ref="yoda" />
+		<constructor-arg index="1" type="java.util.Map">
+			<map>
+				<entry key="FORCEATTACK">
+					<list>
+						<ref bean="windu" />
+						<ref bean="odanUrr" />
+						<ref bean="yoda" />
+					</list>
+				</entry>
+				<entry key="OFFENCE">
+					<list>
+						<ref bean="mercenery" />
+						<ref bean="mercenery" />
+						<ref bean="mercenery" />
+					</list>
+				</entry>
+				<entry key="DEFENCE">
+					<list>
+						<ref bean="cloneTrooper" />
+						<ref bean="cloneTrooper" />
+						<ref bean="cloneTrooper" />
+					</list>
+				</entry>
+			</map>
+		</constructor-arg>
+		<constructor-arg index="2" value="REPUBLIC" />
+	</bean>
+	
+	<bean id="sithArmy" class="com.epam.jjp.sjspt.domain.Army"  scope="prototype"> 
+		<constructor-arg index="0" ref="darthRaya" />
+		<constructor-arg index="1" type="java.util.Map">
+			<map>
+				<entry key="FORCEATTACK">
+					<list>
+						<ref bean="darthSilithus" />
+						<ref bean="darthRaya" />
+					</list>
+				</entry>
+				<entry key="OFFENCE">
+					<list>
+						<ref bean="sithRadical" />
+						<ref bean="sithRadical" />
+						<ref bean="sithRadical" />
+					</list>
+				</entry>
+				<entry key="DEFENCE">
+					<list>
+						<ref bean="sithRadical" />
+						<ref bean="sithRadical" />
+						<ref bean="sithRadical" />
+					</list>
+				</entry>
+			</map>
+			</constructor-arg>
+		<constructor-arg index="2" value="EMPIRE" />
+	</bean>
+	
+	<bean id="darthSilithus" class="com.epam.jjp.sjspt.domain.Sith"
+	 	p:lightSabre-ref="destroyer"
+	 	c:_0="i18n:darth.silithus"
+	 	c:_1="MALE" />
+	 	
+	 <bean id="darthRaya" class="com.epam.jjp.sjspt.domain.Sith"
+	 	p:lightSabre-ref="destroyer"
+	 	c:_0="i18n:darth.raya"
+	 	c:_1="FEMALE" />
+
+	 <bean id="odanUrr" class="com.epam.jjp.sjspt.domain.Jedi"
+	 	p:lightSabre-ref="destroyer"
+	 	c:_0="i18n:jedi.odanUrr"
+	 	c:_1="MALE" />
+	 	
+	 <bean id="windu" class="com.epam.jjp.sjspt.domain.Jedi"
+	 	p:lightSabre-ref="destroyer"
+	 	c:_0="i18n:jedi.windu"
+	 	c:_1="MALE" />
+	 
+	 <bean id="yoda" class="com.epam.jjp.sjspt.domain.Jedi"
+	 	p:lightSabre-ref="destroyer"
+	 	c:_0="i18n:jedi.yoda"
+	 	c:_1="MALE" />
+	 
+	 <bean id="cloneTrooper" class="com.epam.jjp.sjspt.domain.Trooper" scope="prototype" p:weapon-ref="blaster">
+		  <constructor-arg value="i18n:trooper.clone"/>
+		  <constructor-arg value="MALE" />
+	 </bean>
+	 
+	 <bean id="mercenery" class="com.epam.jjp.sjspt.domain.Trooper" scope="prototype"  p:weapon-ref="blaster">
+	  <constructor-arg value="i18n:trooper.bobbafett"/>
+	  <constructor-arg value="MALE" />
+	 </bean>
+	 <bean id="sithRadical" class="com.epam.jjp.sjspt.domain.Trooper" scope="prototype" p:weapon-ref="blaster">
+	  <constructor-arg value="i18n:trooper.sithRadical"/>
+	  <constructor-arg value="OTHER" />
+	 </bean>
+	 
+	 <bean id="destroyer" class="com.epam.jjp.sjspt.domain.LightSabre" >
+	  <constructor-arg value="i18n:lightsabre.destroyer" />
+	  <constructor-arg value="70" />
+	 </bean>
+	 <bean id="slicer" class="com.epam.jjp.sjspt.domain.LightSabre" >
+	  <constructor-arg value="i18n:lightsabre.slicer" />
+	  <constructor-arg value="25" />
+	 </bean>
+	 
+	 <bean id="lightSabre" class="com.epam.jjp.sjspt.domain.LightSabre" >
+	  <constructor-arg value="i18n:lightsabre.default" />
+	  <constructor-arg value="15" />
+	 </bean>
+
+	 <bean id="chopper" class="com.epam.jjp.sjspt.domain.LightSabre"
+	  	c:_0="i18n:lightsabre.chopper"
+	 	c:_1="60" 
+	 	primary="true"/>
+	 	
+	 <bean id="blaster" class="com.epam.jjp.sjspt.factory.BlastGunFactory" scope="singleton"
+	 	c:_0="40">
+	 </bean>
+</beans>
