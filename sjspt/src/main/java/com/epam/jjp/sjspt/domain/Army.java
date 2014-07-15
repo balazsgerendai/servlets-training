@@ -20,7 +20,7 @@ public class Army implements Comparable<Army> {
 	}
 
 	public Map<Operation, List<Person>> getSoldiers() {
-		return Collections.unmodifiableMap(soldiers);
+		return (soldiers);
 	}
 
 	public Person getLeader() {

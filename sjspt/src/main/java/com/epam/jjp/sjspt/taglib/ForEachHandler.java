@@ -1,27 +1,63 @@
 package com.epam.jjp.sjspt.taglib;
 
-import java.util.Collections;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
+import javax.servlet.jsp.JspContext;
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-public class ForEachHandler extends TagSupport {
-	private Collections collection;
+import org.apache.commons.collections.iterators.ArrayIterator;
+import org.apache.commons.lang3.ArrayUtils;
+import org.neo4j.helpers.ArrayUtil;
 
+public class ForEachHandler extends SimpleTagSupport{
+	private Iterator<?> iterator;
+	private String var;
+
+	private Object items;
+	
 	@Override
-	public int doStartTag() throws JspException {
-
-		JspWriter out = pageContext.getOut();
-		return SKIP_BODY;
+	public void doTag() throws JspException, IOException {
+		iterator = chooseIterator();
+		while(iterator.hasNext()){
+			JspContext jspContext = getJspContext();
+			jspContext.setAttribute(var, iterator.next());
+			getJspBody().invoke(null);
+		}
 	}
 
-	public Collections getCollection() {
-		return collection;
+	public Object getItems() {
+		return items;
 	}
 
-	public void setCollection(Collections collection) {
-		this.collection = collection;
+	public void setItems(Object items) {
+		this.items = items;
+	}
+	public String getVar() {
+		return var;
 	}
 
+	public void setVar(String var) {
+		this.var = var;
+	}
+	
+	private Iterator<?> chooseIterator(){
+		Iterator<?> iterator = null;
+		if(items instanceof Map){
+			Map<?,?> map = (Map<?, ?>)(items);
+			iterator = map.entrySet().iterator();
+		}else if(items instanceof List){
+			List<?> list = (List<?>)(items);
+			iterator = list.iterator();
+		}else{
+			iterator = new ArrayIterator(items);
+		
+		}
+		return iterator;
+		
+	}
 }

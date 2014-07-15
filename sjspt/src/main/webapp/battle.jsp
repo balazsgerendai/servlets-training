@@ -21,25 +21,26 @@
 				<div class="panel-body collapseContent" id="collapse1">
 					<h2>The Battle!</h2>
 					
-					<c:forEach var="army" items="${battlefield.armies}">
+					<test:forEach var="army" items="${battlefield.armies}">
 						<table class="table">
 							<tr>
 								<td>Army side: <c:out value="${army.side}" /></td>
 								<td>Leader: <c:out value="${army.leader.name}" /></td>
 							</tr>
-							<tr>
-							<test:forEach collection="${army.soldiers}"></test:forEach>
-								<c:forEach var="entry" items="${army.soldiers}">
+							<tr>						
+								<test:forEach var="entry" items="${army.soldiers}">
 									<tr>
 										<td><c:out value="${entry.key}" /> TEAM</td>
 									</tr>
-									<c:forEach var="soldier" items="${entry.value}">
+									<test:forEach var="soldier" items="${entry.value}">
 										<td><c:out value="${soldier.name}" /></td>
-									</c:forEach>
-								</c:forEach>
+									</test:forEach>
+								</test:forEach>
+								
+							
 							</tr>
 						</table>
-					</c:forEach>
+					</test:forEach>
 				</div>
 			</div>
 		</div>
@@ -57,6 +58,7 @@
 			<div id="collapseTwo" class="panel-collapse collapse in">
 				<div class="panel-body collapseContent" id="collapse2">
 					<c:out value="${battlefield }"></c:out><hr>
+
 					<c:out value="${battlefield.battleReport}" escapeXml="false"></c:out>
 				</div>
 			</div>
