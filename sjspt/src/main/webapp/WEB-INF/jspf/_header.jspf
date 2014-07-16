@@ -9,15 +9,46 @@
 <head>
 <meta charset="utf-8" />
 <title>Star Wars</title>
-<link rel="stylesheet" type="text/css" href="resources/css/main.css">
+
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet"
+	 href="resources/css/starwars.css">
+	 <link rel="stylesheet" type="text/css" href="resources/css/main.css">
 </head>
 <body>
 	<div class="page-header" align="center">
-		<img src="resources/media/logo.png" id="logo" />
+	<img src="resources/media/logo.png" id="logo" />
+		<div id="star-wars-header">
+			<div id="titles">
+				<div id="titlecontent">
+			
+				<p class="center">EPISODE IV<br />A NEW HOPE Developers</p>
+				
+				<p>A long time ago, in a galaxy far, far away....
+
+<p>It is a period of civil war. Rebel
+spaceships, striking from a hidden
+base, have won their first victory
+against the evil Galactic Empire.</p>
+
+<p>During the battle, rebel spies managed
+to steal secret plans to the Empire's
+ultimate weapon, the Death Star, an
+armored space station with enough
+power to destroy an entire planet.</p>
+
+<p>Pursued by the Empire's sinister agents,
+Princess Leia races home aboard her
+starship, custodian of the stolen plans
+that can save her people and restore
+freedom to the galaxy...</p>
+			
+			</div>
+			</div>
+		</div>
 
 	</div>
 	<div align="center"> 
