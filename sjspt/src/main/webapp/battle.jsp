@@ -1,8 +1,5 @@
 
 <%@include file="WEB-INF/jspf/_header.jspf"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="test" uri="/costumForeach"%>
-<%@ page isELIgnored="false"%>
 
 
 <div class="panel-group" id="accordion">
@@ -57,9 +54,9 @@
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse in">
 				<div class="panel-body collapseContent" id="collapse2">
-					<c:out value="${battlefield }"></c:out><hr>
-
-					<c:out value="${battlefield.battleReport}" escapeXml="false"></c:out>
+				<div align="center" id="battleReportContent">
+					<h1>Battle has not started yet!</h1>
+				</div>
 				</div>
 			</div>
 		</div>

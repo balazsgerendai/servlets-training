@@ -22,7 +22,7 @@ public class Battlefield {
 	private Random flipCoin;
 	private static Logger LOGGER = LoggerFactory.getLogger(Battlefield.class);
 	private StringBuilder builder;
-
+	private String winner;
 	public Battlefield(final String name, final Army[] armies) {
 		this.name = name;
 		this.armies = armies;
@@ -70,7 +70,7 @@ public class Battlefield {
 				builder.append(String.format(
 						THE_BATTLE_OF_IS_OVER_THE_WINNER_IS + "<br>", name,
 						"Sith Empire"));
-
+				winner = Side.EMPIRE.getName();
 			} else if (sithArmie.isDefeated()) {
 				battleOver = true;
 				LOGGER.info(String.format(THE_BATTLE_OF_IS_OVER_THE_WINNER_IS,
@@ -78,6 +78,7 @@ public class Battlefield {
 				builder.append(String.format(
 						THE_BATTLE_OF_IS_OVER_THE_WINNER_IS + "<br>", name,
 						"Republic"));
+				winner = Side.REPUBLIC.getName();
 			} else {
 
 				if (flipCoin.nextBoolean()) {
@@ -102,5 +103,7 @@ public class Battlefield {
 	public String getBattleReport() {
 		return builder.toString();
 	}
-
+	public String getWinner(){
+		return winner;
+	}
 }

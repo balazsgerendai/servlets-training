@@ -7,7 +7,7 @@
 				<pattern>%d%msg</pattern>			
 			</layout>
 		</encoder>
-		<file>F:/Projects/Servlets/sjspt/src/main/webapp/logs/battle-log.html</file>
+		<file>D:/Projects/Servlets/sjspt/src/main/webapp/logs/battle-log.html</file>
 	</appender>
  
 	<root level="INFO">

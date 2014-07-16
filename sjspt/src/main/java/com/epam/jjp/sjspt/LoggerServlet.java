@@ -13,7 +13,7 @@ import com.epam.jjp.sjspt.domain.Battlefield;
 
 public class LoggerServlet  extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/DomainServlet");
 		dispatcher.include(request, response);
@@ -22,6 +22,10 @@ public class LoggerServlet  extends HttpServlet{
 		
 		Battlefield battlefield =  (Battlefield) session.getAttribute("battlefield");
 		battlefield.doBattle();
-		response.sendRedirect("Battle");
+		//session.setAttribute("winner", battlefield.getWinner());
+		//response.sendRedirect("Battle");
+		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+		response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		response.getWriter().write(battlefield.getBattleReport());
 	}
 }
