@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 
 public abstract class ForceUser extends Person{
-	private static final String HIT_ENEMY_FOR_DAMAGE = "%s hit enemy %s for %d damage. Health remaining: %d";
+	private static final String HIT_ENEMY_FOR_DAMAGE = "%s hit enemy %s for %d damage. Health remaining: %d %n";
 	private Force allegiance = Force.UNDECIDED;
 	private  LightSabre lightSabre;
 	private Random forceLuck;
@@ -34,18 +34,18 @@ public abstract class ForceUser extends Person{
 	 */
 	@Override
 	public String fight(Person target) {
-		String result = "";
 		
+		String result = "";
 		if(isDead() == false && target.isDead() == false){
 			if(forceLuck.nextBoolean() == true && target instanceof Trooper) {
 				target.setDead(true);
 				LOGGER.info("The force granted me strenght against you " + target.getName());
-				result = ("The force granted me strenght against you " + target.getName()+ "\n");
+				result =  "The force granted me strenght against you " + target.getName();
 			}else{
 				target.setHealth(target.getHealth() - lightSabre.getDamage());
 				if(target.getHealth() <= 0) target.setDead(true);
 				LOGGER.info(String.format(HIT_ENEMY_FOR_DAMAGE,this.getName(),target.getName(),lightSabre.getDamage(), target.getHealth())); 
-				result = (String.format(HIT_ENEMY_FOR_DAMAGE+"<br>",this.getName(),target.getName(),lightSabre.getDamage(), target.getHealth()));  
+				result = String.format(HIT_ENEMY_FOR_DAMAGE ,this.getName(),target.getName(),lightSabre.getDamage(), target.getHealth());  
 			}
 		}
 		return result;
@@ -55,8 +55,8 @@ public abstract class ForceUser extends Person{
 	public String toString() {
 		return "Sith [name=" + getName() + ", lightSabre=" + lightSabre + "]";
 	}
-	/* Returns the force user allegience: LIGHT, DARK, UNDECIEDED
-	 *
+	/**
+	 *  Returns the force user allegience: LIGHT, DARK, UNDECIEDED
 	 */
 	public Force getAllegience() {
 		return allegiance;

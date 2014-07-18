@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Trooper extends Person {
-	private static final String HIT_ENEMY_FOR_DAMAGE = "%s hit enemy %s for %d damage. Health remaining: %d";
+	private static final String HIT_ENEMY_FOR_DAMAGE = "%s hit enemy %s for %d damage. Health remaining: %d %n";
 	private Weapon weapon;
     private static Logger LOGGER = LoggerFactory.getLogger(Trooper.class);
 
@@ -19,7 +19,7 @@ public class Trooper extends Person {
 			target.setHealth(target.getHealth() - weapon.getDamage());
 			if(target.getHealth() <= 0) target.setDead(true);
 			LOGGER.info( String.format(HIT_ENEMY_FOR_DAMAGE, this.getName(), target.getName(),weapon.getDamage(),target.getHealth()));
-			result = ( String.format(HIT_ENEMY_FOR_DAMAGE+"<br>", this.getName(), target.getName(),weapon.getDamage(),target.getHealth()));
+			result =  String.format(HIT_ENEMY_FOR_DAMAGE, this.getName(), target.getName(),weapon.getDamage(),target.getHealth());
 		}
 		return result;
 	}

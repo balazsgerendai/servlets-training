@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class Battlefield {
-	private static final String THE_BATTLE_OF_IS_OVER_THE_WINNER_IS = "The battle of %s is over. The winner is the %s";
+	private static final String THE_BATTLE_OF_IS_OVER_THE_WINNER_IS = "The battle of %s is over. The winner is the %s %n";
 
 	private final String name;
 
@@ -68,7 +68,7 @@ public class Battlefield {
 				LOGGER.info(String.format(THE_BATTLE_OF_IS_OVER_THE_WINNER_IS,
 						name, "Sith Empire"));
 				builder.append(String.format(
-						THE_BATTLE_OF_IS_OVER_THE_WINNER_IS + "<br>", name,
+						THE_BATTLE_OF_IS_OVER_THE_WINNER_IS, name,
 						"Sith Empire"));
 				winner = Side.EMPIRE.getName();
 			} else if (sithArmie.isDefeated()) {
@@ -76,7 +76,7 @@ public class Battlefield {
 				LOGGER.info(String.format(THE_BATTLE_OF_IS_OVER_THE_WINNER_IS,
 						name, "Republic"));
 				builder.append(String.format(
-						THE_BATTLE_OF_IS_OVER_THE_WINNER_IS + "<br>", name,
+						THE_BATTLE_OF_IS_OVER_THE_WINNER_IS, name,
 						"Republic"));
 				winner = Side.REPUBLIC.getName();
 			} else {
